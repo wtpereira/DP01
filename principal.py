@@ -1,9 +1,11 @@
-print('[Menu Principal] Escolha uma das seguintes opções: ')
-print('1 - Categorias')
-print('2 - Editoras')
-print('3 - Autores')
-print('4 - Livros')
-print('0 - Sair do programa')
+menu_principal = """[Menu Principal] Escolha uma das seguintes opções:
+1 - Categorias
+2 - Editoras
+3 - Autores
+4 - Livros
+0 - Sair do programa"""
+
+print(menu_principal)
 
 while True:
     op = input('Digite a opção: ')
