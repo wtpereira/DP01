@@ -65,9 +65,15 @@ while True:
             if opcao_autor == '0':
                 break
             elif opcao_autor == '1':
-                print('Nome | E-mail | Telefone | Biografia')
-                for autor in tabela_autores:
-                    print(f'{autor[0]} | {autor[1]} | {autor[2]} | {autor[3]}')
+                if tabela_autores == []:
+                    print('Não existem autores cadastrados.')
+                    input('\nPressione <ENTER> para continuar...\n')
+
+                print('ID | Nome | E-mail | Telefone | Biografia')
+                for index, autor in enumerate(tabela_autores):
+                    print(f'{index + 1} | {autor[0]} | {autor[1]} | {autor[2]} | {autor[3]}')
+
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '2':
                 nome_autor = input('Digite o nome do autor: ')
                 telefone_autor = input('Digite o telefone do autor: ')
@@ -79,12 +85,47 @@ while True:
                 novo_autor.append(telefone_autor)
                 novo_autor.append(bio_autor)
                 tabela_autores.append(novo_autor)
+                print('Autor cadastrado com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '3':
-                print('3')
+                if tabela_autores == []:
+                    print('Não existem autores cadastrados.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_autor = int(input('Digite o ID do autor a ser excluído: '))
+                    tabela_autores.pop(id_autor - 1)
+                    print('Autor excluído com sucesso!')
+                    input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '4':
-                print('4')
+                if tabela_autores == []:
+                    print('Não existem autores cadastrados.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_autor = int(input('Digite o ID do autor a ser consultado: '))
+                    autor = tabela_autores[id_autor - 1]
+                    print('ID | Nome | E-mail | Telefone | Biografia')
+                    print(f'{id_autor} | {autor[0]} | {autor[1]} | {autor[2]} | {autor[3]}')
+                    input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '5':
-                print('5')
+                if tabela_autores == []:
+                    print('Não existem autores cadastrados.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_autor = int(input('Digite o ID do autor a ser editado: '))
+                    autor = tabela_autores[id_autor - 1]
+
+                    nome_autor = input('Digite o nome do autor: ')
+                    telefone_autor = input('Digite o telefone do autor: ')
+                    bio_autor = input('Digite a biografia do autor: ')
+                    email_autor = input('Digite o e-mail do autor: ')
+
+                    tabela_autores[id_autor - 1][0] = nome_autor
+                    tabela_autores[id_autor - 1][1] = email_autor
+                    tabela_autores[id_autor - 1][2] = telefone_autor
+                    tabela_autores[id_autor - 1][3] = bio_autor
+
+                    print('Autor editado com sucesso!')
+                    input('\nPressione <ENTER> para continuar...\n')
             else:
                 print('Opção inválida!')
     elif op == '4':
