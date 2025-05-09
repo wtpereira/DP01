@@ -45,6 +45,8 @@ menu_livro = """
 """
 
 tabela_autores = []
+tabela_categoria = []
+tabela_editora = []
 
 while True:
     print(menu_principal)
@@ -53,11 +55,33 @@ while True:
     if op == '0':
         break
     elif op == '1':
-        print(menu_categoria)
-        input('Digite <ENTER> para continuar...')
+        while True:
+            print(menu_categoria)
+            opcao_categoria = input('Digite a opção: ')
+            if opcao_categoria == '2':
+                nome_categoria = input('Digite o nome da categoria: ')
+                nova_categoria = {
+                    'nome': nome_categoria
+                }
+                tabela_categoria.append(nova_categoria)
+                print('Categoria cadastrada com sucesso!')
+                input('Digite <ENTER> para continuar...')
     elif op == '2': # else if
-        print(menu_editora)
-        input('Digite <ENTER> para continuar...')
+        while True:
+            print(menu_editora)
+            opcao_editora = input('Digite a opção: ')
+            if opcao_editora == '2':
+                nome_editora = input('Digite o nome da editora: ')
+                endereco_editora = input('Digite o endereço da editora: ')
+                telefone_editora = input('Digite o telefone da editora: ')
+                nova_editora = {
+                    'nome': nome_editora,
+                    'endereco': endereco_editora,
+                    'telefone': telefone_editora
+                }
+                tabela_editora.append(nova_editora)
+                print('Categoria cadastrada com sucesso!')
+                input('Digite <ENTER> para continuar...')
     elif op == '3':
         while True:
             print(menu_autor)
