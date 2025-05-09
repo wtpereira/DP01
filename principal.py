@@ -67,11 +67,10 @@ while True:
             elif opcao_autor == '1':
                 if tabela_autores == []:
                     print('Não existem autores cadastrados.')
-                    input('\nPressione <ENTER> para continuar...\n')
-
-                print('ID | Nome | E-mail | Telefone | Biografia')
-                for index, autor in enumerate(tabela_autores):
-                    print(f'{index + 1} | {autor[0]} | {autor[1]} | {autor[2]} | {autor[3]}')
+                else:
+                    print('ID | Nome | E-mail | Telefone | Biografia')
+                    for index, autor in enumerate(tabela_autores):
+                        print(f"{index + 1} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
 
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '2':
@@ -79,11 +78,12 @@ while True:
                 telefone_autor = input('Digite o telefone do autor: ')
                 bio_autor = input('Digite a biografia do autor: ')
                 email_autor = input('Digite o e-mail do autor: ')
-                novo_autor = []
-                novo_autor.append(nome_autor)
-                novo_autor.append(email_autor)
-                novo_autor.append(telefone_autor)
-                novo_autor.append(bio_autor)
+                novo_autor = {
+                    'nome': nome_autor,
+                    'email': email_autor,
+                    'telefone': telefone_autor,
+                    'biografia': bio_autor
+                }
                 tabela_autores.append(novo_autor)
                 print('Autor cadastrado com sucesso!')
                 input('\nPressione <ENTER> para continuar...\n')
@@ -104,7 +104,7 @@ while True:
                     id_autor = int(input('Digite o ID do autor a ser consultado: '))
                     autor = tabela_autores[id_autor - 1]
                     print('ID | Nome | E-mail | Telefone | Biografia')
-                    print(f'{id_autor} | {autor[0]} | {autor[1]} | {autor[2]} | {autor[3]}')
+                    print(f"{id_autor} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
                     input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '5':
                 if tabela_autores == []:
@@ -119,10 +119,10 @@ while True:
                     bio_autor = input('Digite a biografia do autor: ')
                     email_autor = input('Digite o e-mail do autor: ')
 
-                    tabela_autores[id_autor - 1][0] = nome_autor
-                    tabela_autores[id_autor - 1][1] = email_autor
-                    tabela_autores[id_autor - 1][2] = telefone_autor
-                    tabela_autores[id_autor - 1][3] = bio_autor
+                    autor['nome'] = nome_autor
+                    autor['email'] = email_autor
+                    autor['telefone'] = telefone_autor
+                    autor['biografia'] = bio_autor
 
                     print('Autor editado com sucesso!')
                     input('\nPressione <ENTER> para continuar...\n')
