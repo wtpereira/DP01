@@ -45,8 +45,9 @@ menu_livro = """
 """
 
 tabela_autores = []
-tabela_categoria = []
-tabela_editora = []
+tabela_categorias = []
+tabela_editoras = []
+tabela_livros = []
 
 while True:
     print(menu_principal)
@@ -58,19 +59,75 @@ while True:
         while True:
             print(menu_categoria)
             opcao_categoria = input('Digite a opção: ')
-            if opcao_categoria == '2':
+            if opcao_categoria == '0':
+                break
+            elif opcao_categoria == '1':
+                if tabela_categorias == []:
+                    print('Não existem categorias cadastradas.')
+                else:
+                    print('ID | Nome')
+                    for index, categoria in enumerate(tabela_categorias):
+                        print(f"{index + 1} | {categoria['nome']}")
+                input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_categoria == '2':
                 nome_categoria = input('Digite o nome da categoria: ')
                 nova_categoria = {
                     'nome': nome_categoria
                 }
-                tabela_categoria.append(nova_categoria)
+                tabela_categorias.append(nova_categoria)
                 print('Categoria cadastrada com sucesso!')
-                input('Digite <ENTER> para continuar...')
+                input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_categoria == '3':
+                if tabela_categorias == []:
+                    print('Não existem categorias cadastradas.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_categoria = int(input('Digite o ID da categoria a ser excluída: '))
+                    tabela_categorias.pop(id_categoria - 1)
+                    print('Categoria excluída com sucesso!')
+                    input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_categoria == '4':
+                if tabela_categorias == []:
+                    print('Não existem categorias cadastradas.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_categoria = int(input('Digite o ID do categoria a ser consultada: '))
+                    categoria = tabela_categorias[id_categoria - 1]
+                    print('ID | Nome')
+                    print(f"{id_categoria} | {categoria['nome']}")
+                    input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_categoria == '5':
+                if tabela_categorias == []:
+                    print('Não existem categorias cadastradas.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_categoria = int(input('Digite o ID da categoria a ser editada: '))
+                    categoria = tabela_categorias[id_categoria - 1]
+
+                    nome_categoria = input('Digite o nome da categoria: ')
+
+                    categoria['nome'] = nome_categoria
+
+                    print('Categoria editada com sucesso!')
+                    input('\nPressione <ENTER> para continuar...\n')
+            else:
+                print('Opção inválida!')
     elif op == '2': # else if
         while True:
             print(menu_editora)
             opcao_editora = input('Digite a opção: ')
-            if opcao_editora == '2':
+            if opcao_editora == '0':
+                break
+            elif opcao_editora == '1':
+                if tabela_editoras == []:
+                    print('Não existem editoras cadastradas.')
+                else:
+                    print('ID | Nome | Endereço | Telefone')
+                    for index, editora in enumerate(tabela_editoras):
+                        print(f"{index + 1} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
+
+                input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_editora == '2':
                 nome_editora = input('Digite o nome da editora: ')
                 endereco_editora = input('Digite o endereço da editora: ')
                 telefone_editora = input('Digite o telefone da editora: ')
@@ -79,9 +136,48 @@ while True:
                     'endereco': endereco_editora,
                     'telefone': telefone_editora
                 }
-                tabela_editora.append(nova_editora)
-                print('Categoria cadastrada com sucesso!')
-                input('Digite <ENTER> para continuar...')
+                tabela_editoras.append(nova_editora)
+                print('Editora cadastrada com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_editora == '3':
+                if tabela_editoras == []:
+                    print('Não existem editoras cadastradas.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_editora = int(input('Digite o ID da editora a ser excluída: '))
+                    tabela_editoras.pop(id_editora - 1)
+                    print('Editora excluída com sucesso!')
+                    input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_editora == '4':
+                if tabela_editoras == []:
+                    print('Não existem editoras cadastradas.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_editora = int(input('Digite o ID da editora a ser consultada: '))
+                    editora = tabela_editoras[id_editora - 1]
+                    print('ID | Nome | Endereço | Telefone')
+                    print(f"{id_editora} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
+                    input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_editora == '5':
+                if tabela_editoras == []:
+                    print('Não existem editoras cadastradas.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                else:
+                    id_editora = int(input('Digite o ID da editora a ser editada: '))
+                    editora = tabela_editoras[id_editora - 1]
+
+                    nome_editora = input('Digite o nome da editora: ')
+                    endereco_editora = input('Digite o endereço da editora: ')
+                    telefone_editora = input('Digite o telefone da editora: ')
+
+                    editora['nome'] = nome_editora
+                    editora['endereco'] = endereco_editora
+                    editora['telefone'] = telefone_editora
+
+                    print('Editora editada com sucesso!')
+                    input('\nPressione <ENTER> para continuar...\n')
+            else:
+                print('Opção inválida!')
     elif op == '3':
         while True:
             print(menu_autor)
@@ -154,7 +250,7 @@ while True:
                 print('Opção inválida!')
     elif op == '4':
         print(menu_livro)
-        input('Digite <ENTER> para continuar...')
+        input('\nPressione <ENTER> para continuar...\n')
     else:
         print('Opção inválida!')
 
