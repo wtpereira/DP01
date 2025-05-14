@@ -88,20 +88,27 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_categoria = int(input('Digite o ID da categoria a ser excluída: '))
-                tabela_categorias.pop(id_categoria - 1)
-                print('Categoria excluída com sucesso!')
+                try:
+                    id_categoria = int(input('Digite o ID da categoria a ser excluída: '))
+                    tabela_categorias.pop(id_categoria - 1)
+                    print('Categoria excluída com sucesso!')
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_categoria == '4':
                 if tabela_categorias == []:
                     print('Não existem categorias cadastradas.')
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
+                try:
+                    id_categoria = int(input('Digite o ID do categoria a ser consultada: '))
+                    categoria = tabela_categorias[id_categoria - 1]
+                    print('ID | Nome')
+                    print(f"{id_categoria} | {categoria['nome']}")
+                except:
+                    print('ID inválido ou não encontrado.')
 
-                id_categoria = int(input('Digite o ID do categoria a ser consultada: '))
-                categoria = tabela_categorias[id_categoria - 1]
-                print('ID | Nome')
-                print(f"{id_categoria} | {categoria['nome']}")
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_categoria == '5':
                 if tabela_categorias == []:
@@ -109,14 +116,18 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_categoria = int(input('Digite o ID da categoria a ser editada: '))
-                categoria = tabela_categorias[id_categoria - 1]
+                try:
+                    id_categoria = int(input('Digite o ID da categoria a ser editada: '))
+                    categoria = tabela_categorias[id_categoria - 1]
 
-                nome_categoria = input('Digite o nome da categoria: ')
+                    nome_categoria = input('Digite o nome da categoria: ')
 
-                categoria['nome'] = nome_categoria
+                    categoria['nome'] = nome_categoria
 
-                print('Categoria editada com sucesso!')
+                    print('Categoria editada com sucesso!')
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             else:
                 print('Opção inválida!')
@@ -155,9 +166,13 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_editora = int(input('Digite o ID da editora a ser excluída: '))
-                tabela_editoras.pop(id_editora - 1)
-                print('Editora excluída com sucesso!')
+                try:
+                    id_editora = int(input('Digite o ID da editora a ser excluída: '))
+                    tabela_editoras.pop(id_editora - 1)
+                    print('Editora excluída com sucesso!')
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_editora == '4':
                 if tabela_editoras == []:
@@ -165,10 +180,14 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_editora = int(input('Digite o ID da editora a ser consultada: '))
-                editora = tabela_editoras[id_editora - 1]
-                print('ID | Nome | Endereço | Telefone')
-                print(f"{id_editora} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
+                try:
+                    id_editora = int(input('Digite o ID da editora a ser consultada: '))
+                    editora = tabela_editoras[id_editora - 1]
+                    print('ID | Nome | Endereço | Telefone')
+                    print(f"{id_editora} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_editora == '5':
                 if tabela_editoras == []:
@@ -176,18 +195,22 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_editora = int(input('Digite o ID da editora a ser editada: '))
-                editora = tabela_editoras[id_editora - 1]
+                try:
+                    id_editora = int(input('Digite o ID da editora a ser editada: '))
+                    editora = tabela_editoras[id_editora - 1]
 
-                nome_editora = input('Digite o nome da editora: ')
-                endereco_editora = input('Digite o endereço da editora: ')
-                telefone_editora = input('Digite o telefone da editora: ')
+                    nome_editora = input('Digite o nome da editora: ')
+                    endereco_editora = input('Digite o endereço da editora: ')
+                    telefone_editora = input('Digite o telefone da editora: ')
 
-                editora['nome'] = nome_editora
-                editora['endereco'] = endereco_editora
-                editora['telefone'] = telefone_editora
+                    editora['nome'] = nome_editora
+                    editora['endereco'] = endereco_editora
+                    editora['telefone'] = telefone_editora
 
-                print('Editora editada com sucesso!')
+                    print('Editora editada com sucesso!')
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             else:
                 print('Opção inválida!')
@@ -228,9 +251,13 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_autor = int(input('Digite o ID do autor a ser excluído: '))
-                tabela_autores.pop(id_autor - 1)
-                print('Autor excluído com sucesso!')
+                try:
+                    id_autor = int(input('Digite o ID do autor a ser excluído: '))
+                    tabela_autores.pop(id_autor - 1)
+                    print('Autor excluído com sucesso!')
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '4':
                 if tabela_autores == []:
@@ -238,10 +265,14 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_autor = int(input('Digite o ID do autor a ser consultado: '))
-                autor = tabela_autores[id_autor - 1]
-                print('ID | Nome | E-mail | Telefone | Biografia')
-                print(f"{id_autor} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
+                try:
+                    id_autor = int(input('Digite o ID do autor a ser consultado: '))
+                    autor = tabela_autores[id_autor - 1]
+                    print('ID | Nome | E-mail | Telefone | Biografia')
+                    print(f"{id_autor} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '5':
                 if tabela_autores == []:
@@ -249,20 +280,24 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_autor = int(input('Digite o ID do autor a ser editado: '))
-                autor = tabela_autores[id_autor - 1]
+                try:
+                    id_autor = int(input('Digite o ID do autor a ser editado: '))
+                    autor = tabela_autores[id_autor - 1]
 
-                nome_autor = input('Digite o nome do autor: ')
-                telefone_autor = input('Digite o telefone do autor: ')
-                bio_autor = input('Digite a biografia do autor: ')
-                email_autor = input('Digite o e-mail do autor: ')
+                    nome_autor = input('Digite o nome do autor: ')
+                    telefone_autor = input('Digite o telefone do autor: ')
+                    bio_autor = input('Digite a biografia do autor: ')
+                    email_autor = input('Digite o e-mail do autor: ')
 
-                autor['nome'] = nome_autor
-                autor['email'] = email_autor
-                autor['telefone'] = telefone_autor
-                autor['biografia'] = bio_autor
+                    autor['nome'] = nome_autor
+                    autor['email'] = email_autor
+                    autor['telefone'] = telefone_autor
+                    autor['biografia'] = bio_autor
 
-                print('Autor editado com sucesso!')
+                    print('Autor editado com sucesso!')
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             else:
                 print('Opção inválida!')
@@ -297,6 +332,7 @@ while True:
                 id_autor = int(input('Digite o ID do autor: '))
                 id_categoria = int(input('Digite o ID da categoria: '))
                 id_editora = int(input('Digite o ID da editora: '))
+
                 novo_livro = {
                     'titulo': titulo,
                     'resumo': resumo,
@@ -316,9 +352,13 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_livro = int(input('Digite o ID do livro a ser excluído: '))
-                tabela_livros.pop(id_livro - 1)
-                print('Livro excluído com sucesso!')
+                try:
+                    id_livro = int(input('Digite o ID do livro a ser excluído: '))
+                    tabela_livros.pop(id_livro - 1)
+                    print('Livro excluído com sucesso!')
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_livro == '4':
                 if tabela_livros == []:
@@ -326,10 +366,14 @@ while True:
                     input('\nPressione <ENTER> para continuar...\n')
                     continue
 
-                id_livro = int(input('Digite o ID do livro a ser consultado: '))
-                livro = tabela_livros[id_livro - 1]
-                print('ID | Título | Ano | Qtde páginas | ISBN | Resumo | Autor | Categoria | Editora')
-                print(f"{id_livro} | {livro['titulo']} | {livro['ano']} | {livro['paginas']} | {livro['isbn']} | {livro['resumo']} | {livro['autor']['nome']} | {livro['categoria']['nome']} | {livro['editora']['nome']}")
+                try:
+                    id_livro = int(input('Digite o ID do livro a ser consultado: '))
+                    livro = tabela_livros[id_livro - 1]
+                    print('ID | Título | Ano | Qtde páginas | ISBN | Resumo | Autor | Categoria | Editora')
+                    print(f"{id_livro} | {livro['titulo']} | {livro['ano']} | {livro['paginas']} | {livro['isbn']} | {livro['resumo']} | {livro['autor']['nome']} | {livro['categoria']['nome']} | {livro['editora']['nome']}")
+                except:
+                    print('ID inválido ou não encontrado.')
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_livro == '5':
                 if tabela_livros == []:
