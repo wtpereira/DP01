@@ -6,6 +6,7 @@
 | - | Subtração | 5 - 2
 | * | Multiplicação | 4 * 3
 | / | Divisão | 22 / 8
+| % | Resto da divisão | 11 % 2
 
 
 # Operadores de atribuição
