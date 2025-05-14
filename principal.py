@@ -13,6 +13,7 @@ menu_categoria = """
 2 - Adicionar nova categoria
 3 - Excluir categoria
 4 - Ver categoria por Id
+5 - Editar categoria
 0 - Voltar ao menu anterior
 """
 
@@ -22,6 +23,7 @@ menu_editora = """
 2 - Adicionar nova editora
 3 - Excluir editora
 4 - Ver editora por Id
+5 - Editar editora
 0 - Voltar ao menu anterior
 """
 
@@ -41,6 +43,7 @@ menu_livro = """
 2 - Adicionar novo livro
 3 - Excluir livro
 4 - Ver livro por Id
+5 - Editar livro
 0 - Voltar ao menu anterior
 """
 
@@ -64,10 +67,12 @@ while True:
             elif opcao_categoria == '1':
                 if tabela_categorias == []:
                     print('Não existem categorias cadastradas.')
-                else:
-                    print('ID | Nome')
-                    for index, categoria in enumerate(tabela_categorias):
-                        print(f"{index + 1} | {categoria['nome']}")
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                print('ID | Nome')
+                for index, categoria in enumerate(tabela_categorias):
+                    print(f"{index + 1} | {categoria['nome']}")
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_categoria == '2':
                 nome_categoria = input('Digite o nome da categoria: ')
@@ -81,35 +86,38 @@ while True:
                 if tabela_categorias == []:
                     print('Não existem categorias cadastradas.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_categoria = int(input('Digite o ID da categoria a ser excluída: '))
-                    tabela_categorias.pop(id_categoria - 1)
-                    print('Categoria excluída com sucesso!')
-                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_categoria = int(input('Digite o ID da categoria a ser excluída: '))
+                tabela_categorias.pop(id_categoria - 1)
+                print('Categoria excluída com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_categoria == '4':
                 if tabela_categorias == []:
                     print('Não existem categorias cadastradas.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_categoria = int(input('Digite o ID do categoria a ser consultada: '))
-                    categoria = tabela_categorias[id_categoria - 1]
-                    print('ID | Nome')
-                    print(f"{id_categoria} | {categoria['nome']}")
-                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_categoria = int(input('Digite o ID do categoria a ser consultada: '))
+                categoria = tabela_categorias[id_categoria - 1]
+                print('ID | Nome')
+                print(f"{id_categoria} | {categoria['nome']}")
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_categoria == '5':
                 if tabela_categorias == []:
                     print('Não existem categorias cadastradas.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_categoria = int(input('Digite o ID da categoria a ser editada: '))
-                    categoria = tabela_categorias[id_categoria - 1]
+                    continue
 
-                    nome_categoria = input('Digite o nome da categoria: ')
+                id_categoria = int(input('Digite o ID da categoria a ser editada: '))
+                categoria = tabela_categorias[id_categoria - 1]
 
-                    categoria['nome'] = nome_categoria
+                nome_categoria = input('Digite o nome da categoria: ')
 
-                    print('Categoria editada com sucesso!')
-                    input('\nPressione <ENTER> para continuar...\n')
+                categoria['nome'] = nome_categoria
+
+                print('Categoria editada com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
             else:
                 print('Opção inválida!')
     elif op == '2': # else if
@@ -121,10 +129,12 @@ while True:
             elif opcao_editora == '1':
                 if tabela_editoras == []:
                     print('Não existem editoras cadastradas.')
-                else:
-                    print('ID | Nome | Endereço | Telefone')
-                    for index, editora in enumerate(tabela_editoras):
-                        print(f"{index + 1} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                print('ID | Nome | Endereço | Telefone')
+                for index, editora in enumerate(tabela_editoras):
+                    print(f"{index + 1} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
 
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_editora == '2':
@@ -143,39 +153,42 @@ while True:
                 if tabela_editoras == []:
                     print('Não existem editoras cadastradas.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_editora = int(input('Digite o ID da editora a ser excluída: '))
-                    tabela_editoras.pop(id_editora - 1)
-                    print('Editora excluída com sucesso!')
-                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_editora = int(input('Digite o ID da editora a ser excluída: '))
+                tabela_editoras.pop(id_editora - 1)
+                print('Editora excluída com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_editora == '4':
                 if tabela_editoras == []:
                     print('Não existem editoras cadastradas.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_editora = int(input('Digite o ID da editora a ser consultada: '))
-                    editora = tabela_editoras[id_editora - 1]
-                    print('ID | Nome | Endereço | Telefone')
-                    print(f"{id_editora} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
-                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_editora = int(input('Digite o ID da editora a ser consultada: '))
+                editora = tabela_editoras[id_editora - 1]
+                print('ID | Nome | Endereço | Telefone')
+                print(f"{id_editora} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_editora == '5':
                 if tabela_editoras == []:
                     print('Não existem editoras cadastradas.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_editora = int(input('Digite o ID da editora a ser editada: '))
-                    editora = tabela_editoras[id_editora - 1]
+                    continue
 
-                    nome_editora = input('Digite o nome da editora: ')
-                    endereco_editora = input('Digite o endereço da editora: ')
-                    telefone_editora = input('Digite o telefone da editora: ')
+                id_editora = int(input('Digite o ID da editora a ser editada: '))
+                editora = tabela_editoras[id_editora - 1]
 
-                    editora['nome'] = nome_editora
-                    editora['endereco'] = endereco_editora
-                    editora['telefone'] = telefone_editora
+                nome_editora = input('Digite o nome da editora: ')
+                endereco_editora = input('Digite o endereço da editora: ')
+                telefone_editora = input('Digite o telefone da editora: ')
 
-                    print('Editora editada com sucesso!')
-                    input('\nPressione <ENTER> para continuar...\n')
+                editora['nome'] = nome_editora
+                editora['endereco'] = endereco_editora
+                editora['telefone'] = telefone_editora
+
+                print('Editora editada com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
             else:
                 print('Opção inválida!')
     elif op == '3':
@@ -187,10 +200,12 @@ while True:
             elif opcao_autor == '1':
                 if tabela_autores == []:
                     print('Não existem autores cadastrados.')
-                else:
-                    print('ID | Nome | E-mail | Telefone | Biografia')
-                    for index, autor in enumerate(tabela_autores):
-                        print(f"{index + 1} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                print('ID | Nome | E-mail | Telefone | Biografia')
+                for index, autor in enumerate(tabela_autores):
+                    print(f"{index + 1} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
 
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '2':
@@ -211,41 +226,44 @@ while True:
                 if tabela_autores == []:
                     print('Não existem autores cadastrados.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_autor = int(input('Digite o ID do autor a ser excluído: '))
-                    tabela_autores.pop(id_autor - 1)
-                    print('Autor excluído com sucesso!')
-                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_autor = int(input('Digite o ID do autor a ser excluído: '))
+                tabela_autores.pop(id_autor - 1)
+                print('Autor excluído com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '4':
                 if tabela_autores == []:
                     print('Não existem autores cadastrados.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_autor = int(input('Digite o ID do autor a ser consultado: '))
-                    autor = tabela_autores[id_autor - 1]
-                    print('ID | Nome | E-mail | Telefone | Biografia')
-                    print(f"{id_autor} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
-                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_autor = int(input('Digite o ID do autor a ser consultado: '))
+                autor = tabela_autores[id_autor - 1]
+                print('ID | Nome | E-mail | Telefone | Biografia')
+                print(f"{id_autor} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
+                input('\nPressione <ENTER> para continuar...\n')
             elif opcao_autor == '5':
                 if tabela_autores == []:
                     print('Não existem autores cadastrados.')
                     input('\nPressione <ENTER> para continuar...\n')
-                else:
-                    id_autor = int(input('Digite o ID do autor a ser editado: '))
-                    autor = tabela_autores[id_autor - 1]
+                    continue
 
-                    nome_autor = input('Digite o nome do autor: ')
-                    telefone_autor = input('Digite o telefone do autor: ')
-                    bio_autor = input('Digite a biografia do autor: ')
-                    email_autor = input('Digite o e-mail do autor: ')
+                id_autor = int(input('Digite o ID do autor a ser editado: '))
+                autor = tabela_autores[id_autor - 1]
 
-                    autor['nome'] = nome_autor
-                    autor['email'] = email_autor
-                    autor['telefone'] = telefone_autor
-                    autor['biografia'] = bio_autor
+                nome_autor = input('Digite o nome do autor: ')
+                telefone_autor = input('Digite o telefone do autor: ')
+                bio_autor = input('Digite a biografia do autor: ')
+                email_autor = input('Digite o e-mail do autor: ')
 
-                    print('Autor editado com sucesso!')
-                    input('\nPressione <ENTER> para continuar...\n')
+                autor['nome'] = nome_autor
+                autor['email'] = email_autor
+                autor['telefone'] = telefone_autor
+                autor['biografia'] = bio_autor
+
+                print('Autor editado com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
             else:
                 print('Opção inválida!')
     elif op == '4':
@@ -257,37 +275,97 @@ while True:
             elif opcao_livro == '1':
                 if tabela_livros == []:
                     print('Não existem livros cadastrados.')
-                else:
-                    print('ID | Título | Ano | Qtde páginas | ISBN | Resumo | Autor | Categoria | Editora')
-                    for index, livro in enumerate(tabela_livros):
-                        print(f"{index + 1} | {livro['titulo']} | {livro['ano']} | {livro['paginas']} | {livro['isbn']} | {livro['resumo']} | {livro['autor']['nome']} | {livro['categoria']['nome']} | {livro['editora']['nome']}")
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                print('ID | Título | Ano | Qtde páginas | ISBN | Resumo | Autor | Categoria | Editora')
+                for index, livro in enumerate(tabela_livros):
+                    print(f"{index + 1} | {livro['titulo']} | {livro['ano']} | {livro['paginas']} | {livro['isbn']} | {livro['resumo']} | {livro['autor']['nome']} | {livro['categoria']['nome']} | {livro['editora']['nome']}")
+
                 input('\nPressione <ENTER> para continuar...\n')
             elif opcao_livro == '2':
                 if tabela_autores == [] or tabela_categorias == [] or tabela_editoras == []:
                     print('É necessário pelo menos um autor, uma categoria, e uma editora cadastros.')
-                else:
-                    titulo = input('Digite o título do livro: ')
-                    resumo = input('Digite o resumo do livro: ')
-                    ano = input('Digite o ano de publicação do livro: ')
-                    paginas = input('Digite a quantidade de páginas: ')
-                    isbn = input('Digite o ISBN do livro: ')
-                    id_autor = int(input('Digite o ID do autor: '))
-                    id_categoria = int(input('Digite o ID da categoria: '))
-                    id_editora = int(input('Digite o ID da editora: '))
-                    novo_livro = {
-                        'titulo': titulo,
-                        'resumo': resumo,
-                        'ano': ano,
-                        'paginas': paginas,
-                        'isbn': isbn,
-                        'autor': tabela_autores[id_autor -1],
-                        'categoria': tabela_categorias[id_categoria -1],
-                        'editora': tabela_editoras[id_editora - 1]
-                    }
-                    tabela_livros.append(novo_livro)
-                    print('Livro cadastrado com sucesso!')
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
 
+                titulo = input('Digite o título do livro: ')
+                resumo = input('Digite o resumo do livro: ')
+                ano = input('Digite o ano de publicação do livro: ')
+                paginas = input('Digite a quantidade de páginas: ')
+                isbn = input('Digite o ISBN do livro: ')
+                id_autor = int(input('Digite o ID do autor: '))
+                id_categoria = int(input('Digite o ID da categoria: '))
+                id_editora = int(input('Digite o ID da editora: '))
+                novo_livro = {
+                    'titulo': titulo,
+                    'resumo': resumo,
+                    'ano': ano,
+                    'paginas': paginas,
+                    'isbn': isbn,
+                    'autor': tabela_autores[id_autor -1],
+                    'categoria': tabela_categorias[id_categoria -1],
+                    'editora': tabela_editoras[id_editora - 1]
+                }
+                tabela_livros.append(novo_livro)
+                print('Livro cadastrado com sucesso!')
                 input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_livro == '3':
+                if tabela_livros == []:
+                    print('Não existem livros cadastrados.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_livro = int(input('Digite o ID do livro a ser excluído: '))
+                tabela_livros.pop(id_livro - 1)
+                print('Livro excluído com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_livro == '4':
+                if tabela_livros == []:
+                    print('Não existem livros cadastrados.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_livro = int(input('Digite o ID do livro a ser consultado: '))
+                livro = tabela_livros[id_livro - 1]
+                print('ID | Título | Ano | Qtde páginas | ISBN | Resumo | Autor | Categoria | Editora')
+                print(f"{id_livro} | {livro['titulo']} | {livro['ano']} | {livro['paginas']} | {livro['isbn']} | {livro['resumo']} | {livro['autor']['nome']} | {livro['categoria']['nome']} | {livro['editora']['nome']}")
+                input('\nPressione <ENTER> para continuar...\n')
+            elif opcao_livro == '5':
+                if tabela_livros == []:
+                    print('Não existem livros cadastrados.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                if tabela_autores == [] or tabela_categorias == [] or tabela_editoras == []:
+                    print('É necessário pelo menos um autor, uma categoria, e uma editora cadastros.')
+                    input('\nPressione <ENTER> para continuar...\n')
+                    continue
+
+                id_livro = int(input('Digite o ID do livro a ser editado: '))
+                livro = tabela_livros[id_livro - 1]
+                titulo = input('Digite o título do livro: ')
+                resumo = input('Digite o resumo do livro: ')
+                ano = input('Digite o ano de publicação do livro: ')
+                paginas = input('Digite a quantidade de páginas: ')
+                isbn = input('Digite o ISBN do livro: ')
+                id_autor = int(input('Digite o ID do autor: '))
+                id_categoria = int(input('Digite o ID da categoria: '))
+                id_editora = int(input('Digite o ID da editora: '))
+                livro['titulo'] = titulo
+                livro['resumo'] = resumo
+                livro['ano'] = ano
+                livro['paginas'] = paginas
+                livro['isbn'] = isbn
+                livro['autor'] = tabela_autores[id_autor -1]
+                livro['categoria'] = tabela_categorias[id_categoria -1]
+                livro['editora'] = tabela_editoras[id_editora - 1]
+
+                print('Livro editado com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
+
+            else:
+                print('Opção inválida!')
     else:
         print('Opção inválida!')
 
