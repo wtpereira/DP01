@@ -52,6 +52,14 @@ tabela_categorias = []
 tabela_editoras = []
 tabela_livros = []
 
+
+def email_valido(email):
+    if email.find('@') >= 1 and email.find('.com') >= 3:
+        return True
+    else:
+        return False
+
+
 def organiza_categoria():
     print(menu_categoria)
     opcao_categoria = input('Digite a opção: ')
@@ -227,6 +235,12 @@ def organiza_autor():
         telefone_autor = input('Digite o telefone do autor: ')
         bio_autor = input('Digite a biografia do autor: ')
         email_autor = input('Digite o e-mail do autor: ')
+        email_autor = email_autor.lower()
+        while not email_valido(email_autor):
+            print('Email inválido! Tente novamente.')
+            email_autor = input('Digite o e-mail do autor: ')
+            email_autor = email_autor.lower()
+
         novo_autor = {
             'nome': nome_autor,
             'email': email_autor,
