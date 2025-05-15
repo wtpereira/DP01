@@ -70,8 +70,36 @@
 
     Retorna um objeto iterável.
 
+- len():
+
+    Retorna o número de itens em um objeto. Quando esse objeto é uma string ela retorna o número de caracteres na string.
+
 
 # Estrutura de Decisão `if`
+
+## if condition
+```
+if condition:
+    expression
+```
+
+## if-else condition
+```
+if condition:
+    expression
+else:
+    expression
+```
+
+## if-elif-else condition
+```
+if condition:
+    expression
+elif condition:
+    expression
+else:
+    expression
+```
 
 ## Operadores de comparação
 - ==    igual
