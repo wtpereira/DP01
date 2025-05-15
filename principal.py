@@ -53,35 +53,32 @@ tabela_editoras = []
 tabela_livros = []
 
 def organiza_categoria():
-    while True:
-        print(menu_categoria)
-        opcao_categoria = input('Digite a opção: ')
-        if opcao_categoria == '0':
-            return
-        elif opcao_categoria == '1':
-            if tabela_categorias == []:
-                print('Não existem categorias cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    print(menu_categoria)
+    opcao_categoria = input('Digite a opção: ')
+    if opcao_categoria == '0':
+        return
+    elif opcao_categoria == '1':
+        if tabela_categorias == []:
+            print('Não existem categorias cadastradas.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             print('ID | Nome')
             for index, categoria in enumerate(tabela_categorias):
                 print(f"{index + 1} | {categoria['nome']}")
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_categoria == '2':
-            nome_categoria = input('Digite o nome da categoria: ')
-            nova_categoria = {
-                'nome': nome_categoria
-            }
-            tabela_categorias.append(nova_categoria)
-            print('Categoria cadastrada com sucesso!')
+    elif opcao_categoria == '2':
+        nome_categoria = input('Digite o nome da categoria: ')
+        nova_categoria = {
+            'nome': nome_categoria
+        }
+        tabela_categorias.append(nova_categoria)
+        print('Categoria cadastrada com sucesso!')
+        input('\nPressione <ENTER> para continuar...\n')
+    elif opcao_categoria == '3':
+        if tabela_categorias == []:
+            print('Não existem categorias cadastradas.')
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_categoria == '3':
-            if tabela_categorias == []:
-                print('Não existem categorias cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+        else:
             try:
                 id_categoria = int(input('Digite o ID da categoria a ser excluída: '))
                 tabela_categorias.pop(id_categoria - 1)
@@ -90,11 +87,11 @@ def organiza_categoria():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_categoria == '4':
-            if tabela_categorias == []:
-                print('Não existem categorias cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
+    elif opcao_categoria == '4':
+        if tabela_categorias == []:
+            print('Não existem categorias cadastradas.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_categoria = int(input('Digite o ID do categoria a ser consultada: '))
                 categoria = tabela_categorias[id_categoria - 1]
@@ -104,12 +101,11 @@ def organiza_categoria():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_categoria == '5':
-            if tabela_categorias == []:
-                print('Não existem categorias cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_categoria == '5':
+        if tabela_categorias == []:
+            print('Não existem categorias cadastradas.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_categoria = int(input('Digite o ID da categoria a ser editada: '))
                 categoria = tabela_categorias[id_categoria - 1]
@@ -123,44 +119,44 @@ def organiza_categoria():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        else:
-            print('Opção inválida!')
+    else:
+        print('Opção inválida!')
+        input()
+
+    organiza_categoria()
 
 def organiza_editora():
-    while True:
-        print(menu_editora)
-        opcao_editora = input('Digite a opção: ')
-        if opcao_editora == '0':
-            return
-        elif opcao_editora == '1':
-            if tabela_editoras == []:
-                print('Não existem editoras cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    print(menu_editora)
+    opcao_editora = input('Digite a opção: ')
+    if opcao_editora == '0':
+        return
+    elif opcao_editora == '1':
+        if tabela_editoras == []:
+            print('Não existem editoras cadastradas.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             print('ID | Nome | Endereço | Telefone')
             for index, editora in enumerate(tabela_editoras):
                 print(f"{index + 1} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_editora == '2':
-            nome_editora = input('Digite o nome da editora: ')
-            endereco_editora = input('Digite o endereço da editora: ')
-            telefone_editora = input('Digite o telefone da editora: ')
-            nova_editora = {
-                'nome': nome_editora,
-                'endereco': endereco_editora,
-                'telefone': telefone_editora
-            }
-            tabela_editoras.append(nova_editora)
-            print('Editora cadastrada com sucesso!')
+    elif opcao_editora == '2':
+        nome_editora = input('Digite o nome da editora: ')
+        endereco_editora = input('Digite o endereço da editora: ')
+        telefone_editora = input('Digite o telefone da editora: ')
+        nova_editora = {
+            'nome': nome_editora,
+            'endereco': endereco_editora,
+            'telefone': telefone_editora
+        }
+        tabela_editoras.append(nova_editora)
+        print('Editora cadastrada com sucesso!')
+        input('\nPressione <ENTER> para continuar...\n')
+    elif opcao_editora == '3':
+        if tabela_editoras == []:
+            print('Não existem editoras cadastradas.')
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_editora == '3':
-            if tabela_editoras == []:
-                print('Não existem editoras cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+        else:
             try:
                 id_editora = int(input('Digite o ID da editora a ser excluída: '))
                 tabela_editoras.pop(id_editora - 1)
@@ -169,12 +165,11 @@ def organiza_editora():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_editora == '4':
-            if tabela_editoras == []:
-                print('Não existem editoras cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_editora == '4':
+        if tabela_editoras == []:
+            print('Não existem editoras cadastradas.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_editora = int(input('Digite o ID da editora a ser consultada: '))
                 editora = tabela_editoras[id_editora - 1]
@@ -184,12 +179,11 @@ def organiza_editora():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_editora == '5':
-            if tabela_editoras == []:
-                print('Não existem editoras cadastradas.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_editora == '5':
+        if tabela_editoras == []:
+            print('Não existem editoras cadastradas.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_editora = int(input('Digite o ID da editora a ser editada: '))
                 editora = tabela_editoras[id_editora - 1]
@@ -207,46 +201,46 @@ def organiza_editora():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        else:
-            print('Opção inválida!')
+    else:
+        print('Opção inválida!')
+        input()
+
+    organiza_editora()
 
 def organiza_autor():
-    while True:
-        print(menu_autor)
-        opcao_autor = input('Digite a opção: ')
-        if opcao_autor == '0':
-            return
-        elif opcao_autor == '1':
-            if tabela_autores == []:
-                print('Não existem autores cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    print(menu_autor)
+    opcao_autor = input('Digite a opção: ')
+    if opcao_autor == '0':
+        return
+    elif opcao_autor == '1':
+        if tabela_autores == []:
+            print('Não existem autores cadastrados.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             print('ID | Nome | E-mail | Telefone | Biografia')
             for index, autor in enumerate(tabela_autores):
                 print(f"{index + 1} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_autor == '2':
-            nome_autor = input('Digite o nome do autor: ')
-            telefone_autor = input('Digite o telefone do autor: ')
-            bio_autor = input('Digite a biografia do autor: ')
-            email_autor = input('Digite o e-mail do autor: ')
-            novo_autor = {
-                'nome': nome_autor,
-                'email': email_autor,
-                'telefone': telefone_autor,
-                'biografia': bio_autor
-            }
-            tabela_autores.append(novo_autor)
-            print('Autor cadastrado com sucesso!')
+    elif opcao_autor == '2':
+        nome_autor = input('Digite o nome do autor: ')
+        telefone_autor = input('Digite o telefone do autor: ')
+        bio_autor = input('Digite a biografia do autor: ')
+        email_autor = input('Digite o e-mail do autor: ')
+        novo_autor = {
+            'nome': nome_autor,
+            'email': email_autor,
+            'telefone': telefone_autor,
+            'biografia': bio_autor
+        }
+        tabela_autores.append(novo_autor)
+        print('Autor cadastrado com sucesso!')
+        input('\nPressione <ENTER> para continuar...\n')
+    elif opcao_autor == '3':
+        if tabela_autores == []:
+            print('Não existem autores cadastrados.')
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_autor == '3':
-            if tabela_autores == []:
-                print('Não existem autores cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+        else:
             try:
                 id_autor = int(input('Digite o ID do autor a ser excluído: '))
                 tabela_autores.pop(id_autor - 1)
@@ -255,12 +249,11 @@ def organiza_autor():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_autor == '4':
-            if tabela_autores == []:
-                print('Não existem autores cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_autor == '4':
+        if tabela_autores == []:
+            print('Não existem autores cadastrados.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_autor = int(input('Digite o ID do autor a ser consultado: '))
                 autor = tabela_autores[id_autor - 1]
@@ -270,12 +263,11 @@ def organiza_autor():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_autor == '5':
-            if tabela_autores == []:
-                print('Não existem autores cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_autor == '5':
+        if tabela_autores == []:
+            print('Não existem autores cadastrados.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_autor = int(input('Digite o ID do autor a ser editado: '))
                 autor = tabela_autores[id_autor - 1]
@@ -295,32 +287,32 @@ def organiza_autor():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        else:
-            print('Opção inválida!')
+    else:
+        print('Opção inválida!')
+        input()
+
+    organiza_autor()
 
 def organiza_livro():
-    while True:
-        print(menu_livro)
-        opcao_livro = input('Digite a opção: ')
-        if opcao_livro == '0':
-            return
-        elif opcao_livro == '1':
-            if tabela_livros == []:
-                print('Não existem livros cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    print(menu_livro)
+    opcao_livro = input('Digite a opção: ')
+    if opcao_livro == '0':
+        return
+    elif opcao_livro == '1':
+        if tabela_livros == []:
+            print('Não existem livros cadastrados.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             print('ID | Título | Ano | Qtde páginas | ISBN | Resumo | Autor | Categoria | Editora')
             for index, livro in enumerate(tabela_livros):
                 print(f"{index + 1} | {livro['titulo']} | {livro['ano']} | {livro['paginas']} | {livro['isbn']} | {livro['resumo']} | {livro['autor']['nome']} | {livro['categoria']['nome']} | {livro['editora']['nome']}")
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_livro == '2':
-            if tabela_autores == [] or tabela_categorias == [] or tabela_editoras == []:
-                print('É necessário pelo menos um autor, uma categoria, e uma editora cadastros.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_livro == '2':
+        if tabela_autores == [] or tabela_categorias == [] or tabela_editoras == []:
+            print('É necessário pelo menos um autor, uma categoria, e uma editora cadastros.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             titulo = input('Digite o título do livro: ')
             resumo = input('Digite o resumo do livro: ')
             ano = input('Digite o ano de publicação do livro: ')
@@ -343,12 +335,11 @@ def organiza_livro():
             tabela_livros.append(novo_livro)
             print('Livro cadastrado com sucesso!')
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_livro == '3':
-            if tabela_livros == []:
-                print('Não existem livros cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_livro == '3':
+        if tabela_livros == []:
+            print('Não existem livros cadastrados.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_livro = int(input('Digite o ID do livro a ser excluído: '))
                 tabela_livros.pop(id_livro - 1)
@@ -357,12 +348,11 @@ def organiza_livro():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_livro == '4':
-            if tabela_livros == []:
-                print('Não existem livros cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_livro == '4':
+        if tabela_livros == []:
+            print('Não existem livros cadastrados.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             try:
                 id_livro = int(input('Digite o ID do livro a ser consultado: '))
                 livro = tabela_livros[id_livro - 1]
@@ -372,42 +362,41 @@ def organiza_livro():
                 print('ID inválido ou não encontrado.')
 
             input('\nPressione <ENTER> para continuar...\n')
-        elif opcao_livro == '5':
-            if tabela_livros == []:
-                print('Não existem livros cadastrados.')
-                input('\nPressione <ENTER> para continuar...\n')
-                continue
-
+    elif opcao_livro == '5':
+        if tabela_livros == []:
+            print('Não existem livros cadastrados.')
+            input('\nPressione <ENTER> para continuar...\n')
+        else:
             if tabela_autores == [] or tabela_categorias == [] or tabela_editoras == []:
                 print('É necessário pelo menos um autor, uma categoria, e uma editora cadastros.')
                 input('\nPressione <ENTER> para continuar...\n')
-                continue
+            else:
+                id_livro = int(input('Digite o ID do livro a ser editado: '))
+                livro = tabela_livros[id_livro - 1]
+                titulo = input('Digite o título do livro: ')
+                resumo = input('Digite o resumo do livro: ')
+                ano = input('Digite o ano de publicação do livro: ')
+                paginas = input('Digite a quantidade de páginas: ')
+                isbn = input('Digite o ISBN do livro: ')
+                id_autor = int(input('Digite o ID do autor: '))
+                id_categoria = int(input('Digite o ID da categoria: '))
+                id_editora = int(input('Digite o ID da editora: '))
+                livro['titulo'] = titulo
+                livro['resumo'] = resumo
+                livro['ano'] = ano
+                livro['paginas'] = paginas
+                livro['isbn'] = isbn
+                livro['autor'] = tabela_autores[id_autor -1]
+                livro['categoria'] = tabela_categorias[id_categoria -1]
+                livro['editora'] = tabela_editoras[id_editora - 1]
 
-            id_livro = int(input('Digite o ID do livro a ser editado: '))
-            livro = tabela_livros[id_livro - 1]
-            titulo = input('Digite o título do livro: ')
-            resumo = input('Digite o resumo do livro: ')
-            ano = input('Digite o ano de publicação do livro: ')
-            paginas = input('Digite a quantidade de páginas: ')
-            isbn = input('Digite o ISBN do livro: ')
-            id_autor = int(input('Digite o ID do autor: '))
-            id_categoria = int(input('Digite o ID da categoria: '))
-            id_editora = int(input('Digite o ID da editora: '))
-            livro['titulo'] = titulo
-            livro['resumo'] = resumo
-            livro['ano'] = ano
-            livro['paginas'] = paginas
-            livro['isbn'] = isbn
-            livro['autor'] = tabela_autores[id_autor -1]
-            livro['categoria'] = tabela_categorias[id_categoria -1]
-            livro['editora'] = tabela_editoras[id_editora - 1]
+                print('Livro editado com sucesso!')
+                input('\nPressione <ENTER> para continuar...\n')
+    else:
+        print('Opção inválida!')
+        input()
 
-            print('Livro editado com sucesso!')
-            input('\nPressione <ENTER> para continuar...\n')
-
-        else:
-            print('Opção inválida!')
-
+    organiza_livro()
 
 while True:
     print(menu_principal)
@@ -425,6 +414,7 @@ while True:
         organiza_livro()
     else:
         print('Opção inválida!')
+        input()
 
 print('Programa encerrado!')
 
