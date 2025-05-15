@@ -57,7 +57,7 @@ def organiza_categoria():
         print(menu_categoria)
         opcao_categoria = input('Digite a opção: ')
         if opcao_categoria == '0':
-            break
+            return
         elif opcao_categoria == '1':
             if tabela_categorias == []:
                 print('Não existem categorias cadastradas.')
@@ -131,7 +131,7 @@ def organiza_editora():
         print(menu_editora)
         opcao_editora = input('Digite a opção: ')
         if opcao_editora == '0':
-            break
+            return
         elif opcao_editora == '1':
             if tabela_editoras == []:
                 print('Não existem editoras cadastradas.')
@@ -215,7 +215,7 @@ def organiza_autor():
         print(menu_autor)
         opcao_autor = input('Digite a opção: ')
         if opcao_autor == '0':
-            break
+            return
         elif opcao_autor == '1':
             if tabela_autores == []:
                 print('Não existem autores cadastrados.')
@@ -303,7 +303,7 @@ def organiza_livro():
         print(menu_livro)
         opcao_livro = input('Digite a opção: ')
         if opcao_livro == '0':
-            break
+            return
         elif opcao_livro == '1':
             if tabela_livros == []:
                 print('Não existem livros cadastrados.')
