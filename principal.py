@@ -60,6 +60,8 @@ def email_valido(email):
         return False
 
 class Autor:
+    __slots__ = ['__nome', '__email', '__telefone', '__biografia']
+
     def __init__(self, n, e, t, b):  # construtor ou inicializador
         self.nome = n
         self.email = e
