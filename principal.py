@@ -1,3 +1,7 @@
+from model.autor import Autor
+
+from service.autor_service import AutorService
+
 menu_principal = """
 [Menu Principal] Escolha uma das seguintes opções:
 1 - Categorias
@@ -27,16 +31,6 @@ menu_editora = """
 0 - Voltar ao menu anterior
 """
 
-menu_autor = """
-[Autores] Escolha uma das seguintes opções:
-1 - Listar todos os autores
-2 - Adicionar novo autor
-3 - Excluir autor
-4 - Ver autor por Id
-5 - Editar autor
-0 - Voltar ao menu anterior
-"""
-
 menu_livro = """
 [Livros] Escolha uma das seguintes opções:
 1 - Listar todos os livros
@@ -47,64 +41,12 @@ menu_livro = """
 0 - Voltar ao menu anterior
 """
 
+autor_service = AutorService()
+
 tabela_autores = []
 tabela_categorias = []
 tabela_editoras = []
 tabela_livros = []
-
-
-def email_valido(email):
-    if email.find('@') >= 1 and email.find('.com') >= 3:
-        return True
-    else:
-        return False
-
-class Autor:
-    __slots__ = ['__nome', '__email', '__telefone', '__biografia']
-
-    def __init__(self, n, e, t, b):  # construtor ou inicializador
-        self.nome = n
-        self.email = e
-        self.telefone = t
-        self.biografia = b
-
-    @property
-    def nome(self):
-        return self.__nome
-
-    @nome.setter
-    def nome(self, n):
-        self.__nome = n.title()
-
-    @property
-    def email(self):
-        return self.__email
-
-    @email.setter
-    def email(self, e):
-        e = e.lower()  # Transformar para minúsculo.
-        if email_valido(e):
-            self.__email = e
-            return
-        else:
-            self.__email = None
-            raise Exception('E-mail inválido!')
-
-    @property
-    def telefone(self):
-        return self.__telefone
-
-    @telefone.setter
-    def telefone(self, t):
-        self.__telefone = t
-
-    @property
-    def biografia(self):
-        return self.__biografia
-
-    @biografia.setter
-    def biografia(self, bio):
-        self.__biografia = bio
 
 
 def organiza_categoria():
@@ -262,99 +204,6 @@ def organiza_editora():
 
     organiza_editora()
 
-def organiza_autor():
-    print(menu_autor)
-    opcao_autor = input('Digite a opção: ')
-    if opcao_autor == '0':
-        return
-    elif opcao_autor == '1':
-        if tabela_autores == []:
-            print('Não existem autores cadastrados.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            print('ID | Nome | E-mail | Telefone | Biografia')
-            for index, autor in enumerate(tabela_autores):
-                print(f"{index + 1} | {autor.nome} | {autor.email} | {autor.telefone} | {autor.biografia}")
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_autor == '2':
-        nome_autor = input('Digite o nome do autor: ')
-        telefone_autor = input('Digite o telefone do autor: ')
-        bio_autor = input('Digite a biografia do autor: ')
-
-        while True:
-            try:
-                email_autor = input('Digite o e-mail do autor: ')
-                novo_autor = Autor(nome_autor, email_autor, telefone_autor, bio_autor)
-                break
-            except Exception as ex:
-                print(f'Ocorreu um erro: {ex}')
-
-        tabela_autores.append(novo_autor)
-        print('Autor cadastrado com sucesso!')
-        input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_autor == '3':
-        if tabela_autores == []:
-            print('Não existem autores cadastrados.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_autor = int(input('Digite o ID do autor a ser excluído: '))
-                tabela_autores.pop(id_autor - 1)
-                print('Autor excluído com sucesso!')
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_autor == '4':
-        if tabela_autores == []:
-            print('Não existem autores cadastrados.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_autor = int(input('Digite o ID do autor a ser consultado: '))
-                autor = tabela_autores[id_autor - 1]
-                print('ID | Nome | E-mail | Telefone | Biografia')
-                print(f"{id_autor} | {autor.nome} | {autor.email} | {autor.telefone} | {autor.biografia}")
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_autor == '5':
-        if tabela_autores == []:
-            print('Não existem autores cadastrados.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_autor = int(input('Digite o ID do autor a ser editado: '))
-                autor = tabela_autores[id_autor - 1]
-
-                nome_autor = input('Digite o nome do autor: ')
-                telefone_autor = input('Digite o telefone do autor: ')
-                bio_autor = input('Digite a biografia do autor: ')
-
-                autor.nome = nome_autor
-                autor.telefone = telefone_autor
-                autor.biografia = bio_autor
-                while True:
-                    try:
-                        email_autor = input('Digite o e-mail do autor: ')
-                        autor.email = email_autor
-                        break
-                    except Exception as ex:
-                        print(f'Ocorreu um erro: {ex}')
-
-                print('Autor editado com sucesso!')
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    else:
-        print('Opção inválida!')
-        input()
-
-    organiza_autor()
-
 def organiza_livro():
     print(menu_livro)
     opcao_livro = input('Digite a opção: ')
@@ -471,7 +320,7 @@ while True:
     elif op == '2': # else if
         organiza_editora()
     elif op == '3':
-        organiza_autor()
+        autor_service.menu()
     elif op == '4':
         organiza_livro()
     else:
