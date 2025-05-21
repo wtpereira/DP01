@@ -59,6 +59,51 @@ def email_valido(email):
     else:
         return False
 
+class Autor:
+    def __init__(self, n, e, t, b):  # construtor ou inicializador
+        self.nome = n
+        self.email = e
+        self.telefone = t
+        self.biografia = b
+
+    @property
+    def nome(self):
+        return self.__nome
+
+    @nome.setter
+    def nome(self, n):
+        self.__nome = n.title()
+
+    @property
+    def email(self):
+        return self.__email
+
+    @email.setter
+    def email(self, e):
+        e = e.lower()  # Transformar para minúsculo.
+        if email_valido(e):
+            self.__email = e
+            return
+        else:
+            self.__email = None
+            raise Exception('E-mail inválido!')
+
+    @property
+    def telefone(self):
+        return self.__telefone
+
+    @telefone.setter
+    def telefone(self, t):
+        self.__telefone = t
+
+    @property
+    def biografia(self):
+        return self.__biografia
+
+    @biografia.setter
+    def biografia(self, bio):
+        self.__biografia = bio
+
 
 def organiza_categoria():
     print(menu_categoria)
@@ -227,26 +272,22 @@ def organiza_autor():
         else:
             print('ID | Nome | E-mail | Telefone | Biografia')
             for index, autor in enumerate(tabela_autores):
-                print(f"{index + 1} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
+                print(f"{index + 1} | {autor.nome} | {autor.email} | {autor.telefone} | {autor.biografia}")
 
             input('\nPressione <ENTER> para continuar...\n')
     elif opcao_autor == '2':
         nome_autor = input('Digite o nome do autor: ')
         telefone_autor = input('Digite o telefone do autor: ')
         bio_autor = input('Digite a biografia do autor: ')
-        email_autor = input('Digite o e-mail do autor: ')
-        email_autor = email_autor.lower()
-        while not email_valido(email_autor):
-            print('Email inválido! Tente novamente.')
-            email_autor = input('Digite o e-mail do autor: ')
-            email_autor = email_autor.lower()
 
-        novo_autor = {
-            'nome': nome_autor,
-            'email': email_autor,
-            'telefone': telefone_autor,
-            'biografia': bio_autor
-        }
+        while True:
+            try:
+                email_autor = input('Digite o e-mail do autor: ')
+                novo_autor = Autor(nome_autor, email_autor, telefone_autor, bio_autor)
+                break
+            except Exception as ex:
+                print(f'Ocorreu um erro: {ex}')
+
         tabela_autores.append(novo_autor)
         print('Autor cadastrado com sucesso!')
         input('\nPressione <ENTER> para continuar...\n')
@@ -272,7 +313,7 @@ def organiza_autor():
                 id_autor = int(input('Digite o ID do autor a ser consultado: '))
                 autor = tabela_autores[id_autor - 1]
                 print('ID | Nome | E-mail | Telefone | Biografia')
-                print(f"{id_autor} | {autor['nome']} | {autor['email']} | {autor['telefone']} | {autor['biografia']}")
+                print(f"{id_autor} | {autor.nome} | {autor.email} | {autor.telefone} | {autor.biografia}")
             except:
                 print('ID inválido ou não encontrado.')
 
@@ -289,17 +330,17 @@ def organiza_autor():
                 nome_autor = input('Digite o nome do autor: ')
                 telefone_autor = input('Digite o telefone do autor: ')
                 bio_autor = input('Digite a biografia do autor: ')
-                email_autor = input('Digite o e-mail do autor: ')
-                email_autor = email_autor.lower()
-                while not email_valido(email_autor):
-                    print('Email inválido! Tente novamente.')
-                    email_autor = input('Digite o e-mail do autor: ')
-                    email_autor = email_autor.lower()
 
-                autor['nome'] = nome_autor
-                autor['email'] = email_autor
-                autor['telefone'] = telefone_autor
-                autor['biografia'] = bio_autor
+                autor.nome = nome_autor
+                autor.telefone = telefone_autor
+                autor.biografia = bio_autor
+                while True:
+                    try:
+                        email_autor = input('Digite o e-mail do autor: ')
+                        autor.email = email_autor
+                        break
+                    except Exception as ex:
+                        print(f'Ocorreu um erro: {ex}')
 
                 print('Autor editado com sucesso!')
             except:
