@@ -42,7 +42,7 @@ class AutorService:
         else:
             print('ID | Nome | E-mail | Telefone | Biografia')
             for index, autor in enumerate(AutorService.autor_dao.listar()):
-                print(f"{autor.id} | {autor.nome} | {autor.email} | {autor.telefone} | {autor.biografia}")
+                print(autor)
 
             input('\nPressione <ENTER> para continuar...\n')
 
@@ -86,7 +86,7 @@ class AutorService:
                 autor = AutorService.autor_dao.buscar_por_id(id_autor)
                 if autor:
                     print('ID | Nome | E-mail | Telefone | Biografia')
-                    print(f"{autor.id} | {autor.nome} | {autor.email} | {autor.telefone} | {autor.biografia}")
+                    print(autor)
                 else:
                     print('ID não encontrado.')
             except Exception as ex:

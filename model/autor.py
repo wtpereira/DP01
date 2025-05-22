@@ -12,6 +12,9 @@ class Autor:
         self.telefone = t
         self.biografia = b
 
+    def __str__(self):
+        return f"{self.id} | {self.nome} | {self.email} | {self.telefone} | {self.biografia}"
+
     @property
     def id(self):
         return self.__id
