@@ -313,19 +313,20 @@ while True:
     print(menu_principal)
     op = input('Digite a opção: ')
 
-    if op == '0':
-        break
-    elif op == '1':
-        organiza_categoria()
-    elif op == '2': # else if
-        organiza_editora()
-    elif op == '3':
-        autor_service.menu()
-    elif op == '4':
-        organiza_livro()
-    else:
-        print('Opção inválida!')
-        input()
+    match op:
+        case '0':
+            break
+        case '1':
+            organiza_categoria()
+        case '2':
+            organiza_editora()
+        case '3':
+            autor_service.menu()
+        case '4':
+            organiza_livro()
+        case _:
+            print('Opção inválida!')
+            input()
 
 print('Programa encerrado!')
 

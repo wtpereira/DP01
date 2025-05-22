@@ -17,21 +17,22 @@ class AutorService:
     def menu(self):
         print(menu_autor)
         opcao_autor = input('Digite a opção: ')
-        if opcao_autor == '0':
-            return
-        elif opcao_autor == '1':
-            self.listar()
-        elif opcao_autor == '2':
-            self.adicionar()
-        elif opcao_autor == '3':
-            self.remover()
-        elif opcao_autor == '4':
-            self.mostrar_por_id()
-        elif opcao_autor == '5':
-            self.editar()
-        else:
-            print('Opção inválida!')
-            input()
+        match opcao_autor:
+            case '0':
+                return
+            case '1':
+                self.listar()
+            case '2':
+                self.adicionar()
+            case '3':
+                self.remover()
+            case '4':
+                self.mostrar_por_id()
+            case '5':
+                self.editar()
+            case _:
+                print('Opção inválida!')
+                input()
 
         self.menu()
 
