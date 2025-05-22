@@ -2,13 +2,24 @@ from model.utils import email_valido
 
 
 class Autor:
-    __slots__ = ['__nome', '__email', '__telefone', '__biografia']
+    id_autor = 1
+    __slots__ = ['__id', '__nome', '__email', '__telefone', '__biografia']
 
     def __init__(self, n, e, t, b):  # construtor ou inicializador
+        self.id = Autor.id_autor
         self.nome = n
         self.email = e
         self.telefone = t
         self.biografia = b
+
+    @property
+    def id(self):
+        return self.__id
+
+    @id.setter
+    def id(self, i):
+        self.__id = i
+        Autor.id_autor += 1
 
     @property
     def nome(self):
