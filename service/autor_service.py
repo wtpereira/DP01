@@ -2,7 +2,7 @@ from dao.autor_dao import AutorDAO
 from model.autor import Autor
 
 menu_autor = """
-[Autores] Escolha uma das seguintes opções:
+\033[0;34m[Autores] Escolha uma das seguintes opções:\033[0m
 1 - Listar todos os autores
 2 - Adicionar novo autor
 3 - Excluir autor
@@ -56,7 +56,7 @@ class AutorService:
                 email_autor = input('Digite o e-mail do autor: ')
                 novo_autor = Autor(nome_autor, email_autor, telefone_autor, bio_autor)
             except Exception as ex:
-                print(f'Ocorreu um erro: {ex}')
+                print(f'\033[0;31mOcorreu um erro: {ex}\033[0m')
             else:  # Caso não ocorra nenhuma exceção
                 AutorService.autor_dao.adicionar(novo_autor)
                 print('Autor cadastrado com sucesso!')

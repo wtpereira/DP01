@@ -3,7 +3,7 @@ from model.autor import Autor
 from service.autor_service import AutorService
 
 menu_principal = """
-[Menu Principal] Escolha uma das seguintes opções:
+\033[0;32m[Menu Principal] Escolha uma das seguintes opções:\033[0m
 1 - Categorias
 2 - Editoras
 3 - Autores
@@ -12,7 +12,7 @@ menu_principal = """
 """
 
 menu_categoria = """
-[Categorias] Escolha uma das seguintes opções:
+\033[0;34m[Categorias] Escolha uma das seguintes opções:\033[0m
 1 - Listar toda as categorias
 2 - Adicionar nova categoria
 3 - Excluir categoria
@@ -22,7 +22,7 @@ menu_categoria = """
 """
 
 menu_editora = """
-[Editoras] Escolha uma das seguintes opções:
+\033[0;34m[Editoras] Escolha uma das seguintes opções:\033[0m
 1 - Listar todas as editoras
 2 - Adicionar nova editora
 3 - Excluir editora
@@ -32,7 +32,7 @@ menu_editora = """
 """
 
 menu_livro = """
-[Livros] Escolha uma das seguintes opções:
+\033[0;34m[Livros] Escolha uma das seguintes opções:\033[0m
 1 - Listar todos os livros
 2 - Adicionar novo livro
 3 - Excluir livro
