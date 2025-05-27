@@ -2,6 +2,7 @@ from model.autor import Autor
 
 from service.autor_service import AutorService
 from service.categoria_service import CategoriaService
+from service.editora_service import EditoraService
 
 menu_principal = """
 \033[0;32m[Menu Principal] Escolha uma das seguintes opções:\033[0m
@@ -10,16 +11,6 @@ menu_principal = """
 3 - Autores
 4 - Livros
 0 - Sair do programa
-"""
-
-menu_editora = """
-\033[0;34m[Editoras] Escolha uma das seguintes opções:\033[0m
-1 - Listar todas as editoras
-2 - Adicionar nova editora
-3 - Excluir editora
-4 - Ver editora por Id
-5 - Editar editora
-0 - Voltar ao menu anterior
 """
 
 menu_livro = """
@@ -34,94 +25,13 @@ menu_livro = """
 
 autor_service = AutorService()
 categoria_service = CategoriaService()
+editora_service = EditoraService()
 
 tabela_autores = []
 tabela_categorias = []
 tabela_editoras = []
 tabela_livros = []
 
-
-def organiza_editora():
-    print(menu_editora)
-    opcao_editora = input('Digite a opção: ')
-    if opcao_editora == '0':
-        return
-    elif opcao_editora == '1':
-        if tabela_editoras == []:
-            print('Não existem editoras cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            print('ID | Nome | Endereço | Telefone')
-            for index, editora in enumerate(tabela_editoras):
-                print(f"{index + 1} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_editora == '2':
-        nome_editora = input('Digite o nome da editora: ')
-        endereco_editora = input('Digite o endereço da editora: ')
-        telefone_editora = input('Digite o telefone da editora: ')
-        nova_editora = {
-            'nome': nome_editora,
-            'endereco': endereco_editora,
-            'telefone': telefone_editora
-        }
-        tabela_editoras.append(nova_editora)
-        print('Editora cadastrada com sucesso!')
-        input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_editora == '3':
-        if tabela_editoras == []:
-            print('Não existem editoras cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_editora = int(input('Digite o ID da editora a ser excluída: '))
-                tabela_editoras.pop(id_editora - 1)
-                print('Editora excluída com sucesso!')
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_editora == '4':
-        if tabela_editoras == []:
-            print('Não existem editoras cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_editora = int(input('Digite o ID da editora a ser consultada: '))
-                editora = tabela_editoras[id_editora - 1]
-                print('ID | Nome | Endereço | Telefone')
-                print(f"{id_editora} | {editora['nome']} | {editora['endereco']} | {editora['telefone']}")
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_editora == '5':
-        if tabela_editoras == []:
-            print('Não existem editoras cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_editora = int(input('Digite o ID da editora a ser editada: '))
-                editora = tabela_editoras[id_editora - 1]
-
-                nome_editora = input('Digite o nome da editora: ')
-                endereco_editora = input('Digite o endereço da editora: ')
-                telefone_editora = input('Digite o telefone da editora: ')
-
-                editora['nome'] = nome_editora
-                editora['endereco'] = endereco_editora
-                editora['telefone'] = telefone_editora
-
-                print('Editora editada com sucesso!')
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    else:
-        print('Opção inválida!')
-        input()
-
-    organiza_editora()
 
 def organiza_livro():
     print(menu_livro)
@@ -228,6 +138,7 @@ def organiza_livro():
 
     organiza_livro()
 
+
 while True:
     print(menu_principal)
     op = input('Digite a opção: ')
@@ -238,7 +149,7 @@ while True:
         case '1':
             categoria_service.menu()
         case '2':
-            organiza_editora()
+            editora_service.menu()
         case '3':
             autor_service.menu()
         case '4':
