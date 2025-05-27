@@ -61,7 +61,7 @@ class CategoriaService:
             print('Categoria adicionada com sucesso!')
 
     def remover(self):
-        if CategoriaService.categoria_dao.empty() == []:
+        if CategoriaService.categoria_dao.listar() == []:
             print("Nenhuma Categoria cadastrada.")
             input("Pressione <ENTER> para continuar.")
             return
@@ -74,7 +74,7 @@ class CategoriaService:
             print('Categoria não encontrada!')
 
     def mostrar_por_id(self):
-        if CategoriaService.categoria_dao.empty():
+        if CategoriaService.categoria_dao.listar() == []:
             print("Nenhuma Categoria cadastrada.")
             input("Pressione <ENTER> para continuar.")
         else:
