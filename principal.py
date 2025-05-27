@@ -1,6 +1,7 @@
 from model.autor import Autor
 
 from service.autor_service import AutorService
+from service.categoria_service import CategoriaService
 
 menu_principal = """
 \033[0;32m[Menu Principal] Escolha uma das seguintes opções:\033[0m
@@ -9,16 +10,6 @@ menu_principal = """
 3 - Autores
 4 - Livros
 0 - Sair do programa
-"""
-
-menu_categoria = """
-\033[0;34m[Categorias] Escolha uma das seguintes opções:\033[0m
-1 - Listar toda as categorias
-2 - Adicionar nova categoria
-3 - Excluir categoria
-4 - Ver categoria por Id
-5 - Editar categoria
-0 - Voltar ao menu anterior
 """
 
 menu_editora = """
@@ -42,85 +33,13 @@ menu_livro = """
 """
 
 autor_service = AutorService()
+categoria_service = CategoriaService()
 
 tabela_autores = []
 tabela_categorias = []
 tabela_editoras = []
 tabela_livros = []
 
-
-def organiza_categoria():
-    print(menu_categoria)
-    opcao_categoria = input('Digite a opção: ')
-    if opcao_categoria == '0':
-        return
-    elif opcao_categoria == '1':
-        if tabela_categorias == []:
-            print('Não existem categorias cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            print('ID | Nome')
-            for index, categoria in enumerate(tabela_categorias):
-                print(f"{index + 1} | {categoria['nome']}")
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_categoria == '2':
-        nome_categoria = input('Digite o nome da categoria: ')
-        nova_categoria = {
-            'nome': nome_categoria
-        }
-        tabela_categorias.append(nova_categoria)
-        print('Categoria cadastrada com sucesso!')
-        input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_categoria == '3':
-        if tabela_categorias == []:
-            print('Não existem categorias cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_categoria = int(input('Digite o ID da categoria a ser excluída: '))
-                tabela_categorias.pop(id_categoria - 1)
-                print('Categoria excluída com sucesso!')
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_categoria == '4':
-        if tabela_categorias == []:
-            print('Não existem categorias cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_categoria = int(input('Digite o ID do categoria a ser consultada: '))
-                categoria = tabela_categorias[id_categoria - 1]
-                print('ID | Nome')
-                print(f"{id_categoria} | {categoria['nome']}")
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    elif opcao_categoria == '5':
-        if tabela_categorias == []:
-            print('Não existem categorias cadastradas.')
-            input('\nPressione <ENTER> para continuar...\n')
-        else:
-            try:
-                id_categoria = int(input('Digite o ID da categoria a ser editada: '))
-                categoria = tabela_categorias[id_categoria - 1]
-
-                nome_categoria = input('Digite o nome da categoria: ')
-
-                categoria['nome'] = nome_categoria
-
-                print('Categoria editada com sucesso!')
-            except:
-                print('ID inválido ou não encontrado.')
-
-            input('\nPressione <ENTER> para continuar...\n')
-    else:
-        print('Opção inválida!')
-        input()
-
-    organiza_categoria()
 
 def organiza_editora():
     print(menu_editora)
@@ -317,7 +236,7 @@ while True:
         case '0':
             break
         case '1':
-            organiza_categoria()
+            categoria_service.menu()
         case '2':
             organiza_editora()
         case '3':
