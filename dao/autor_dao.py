@@ -19,17 +19,15 @@ class AutorDAO:
         return False
 
     def buscar_por_id(self, id_autor):
-        for index, autor in enumerate(AutorDAO.tabela_autores):
+        for autor in AutorDAO.tabela_autores:
             if autor.id == id_autor:
-                autor = AutorDAO.tabela_autores[index]
                 return autor
 
         return None
 
     def editar(self, id_autor):
-        for index, autor in enumerate(AutorDAO.tabela_autores):
+        for autor in AutorDAO.tabela_autores:
             if autor.id == id_autor:
-                autor = AutorDAO.tabela_autores[index]
                 return autor
 
         return None

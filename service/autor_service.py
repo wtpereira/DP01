@@ -69,11 +69,14 @@ class AutorService:
             print('Não existem autores cadastrados.')
             input('\nPressione <ENTER> para continuar...\n')
         else:
-            id_autor = int(input('Digite o ID do autor a ser excluído: '))
-            if AutorService.autor_dao.remover(id_autor):
-                print('Autor excluído com sucesso!')
-            else:
-                print('ID inválido ou não encontrado.')
+            try:
+                id_autor = int(input('Digite o ID do autor a ser excluído: '))
+                if AutorService.autor_dao.remover(id_autor):
+                    print('Autor excluído com sucesso!')
+                else:
+                    print('ID não encontrado.')
+            except Exception as ex:
+                print(f'\033[31mID inválido: {ex}.\033[0m')
 
             input('\nPressione <ENTER> para continuar...\n')
 
@@ -91,7 +94,7 @@ class AutorService:
                 else:
                     print('ID não encontrado.')
             except Exception as ex:
-                print(f'ID inválido: {ex}.')
+                print(f'\033[31mID inválido: {ex}.\033[0m')
 
             input('\nPressione <ENTER> para continuar...\n')
 
@@ -117,12 +120,12 @@ class AutorService:
                             autor.email = email_autor
                             break
                         except Exception as ex:
-                            print(f'Ocorreu um erro: {ex}')
+                            print(f'\033[31mOcorreu um erro: {ex}\033[0m')
                         else:
                             print('Autor editado com sucesso!')
                 else:
                     print('ID não encontrado.')
             except Exception as ex:
-                print(f'ID inválido: {ex}.')
+                print(f'\033[31mID inválido: {ex}.\033[0m')
 
             input('\nPressione <ENTER> para continuar...\n')
